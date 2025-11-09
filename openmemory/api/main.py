@@ -1,4 +1,5 @@
 import datetime
+import os
 from uuid import uuid4
 
 from app.config import DEFAULT_APP_ID, USER_ID
@@ -10,7 +11,13 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi_pagination import add_pagination
 
-app = FastAPI(title="OpenMemory API")
+# Get base path from environment variable
+BASE_PATH = os.getenv("BASE_PATH", "").rstrip("/")
+
+app = FastAPI(
+    title="OpenMemory API",
+    root_path=BASE_PATH
+)
 
 app.add_middleware(
     CORSMiddleware,

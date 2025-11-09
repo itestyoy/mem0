@@ -11,6 +11,7 @@ services:
     environment:
       - USER
       - API_KEY
+      - BASE_PATH=${BASE_PATH:-}
     env_file:
       - api/.env
     depends_on:
@@ -31,6 +32,7 @@ services:
     environment:
       - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
       - NEXT_PUBLIC_USER_ID=${USER}
+      - NEXT_PUBLIC_BASE_PATH=${NEXT_PUBLIC_BASE_PATH:-}
 
 volumes:
   mem0_storage:
